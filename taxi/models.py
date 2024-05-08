@@ -19,8 +19,7 @@ class Car(models.Model):
     manufacturer = models.ForeignKey(
         Manufacturer,
         related_name="cars",
-        on_delete=models.SET_DEFAULT,
-        default="Unknown",
+        on_delete=models.CASCADE,
     )
     drivers = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
@@ -38,8 +37,6 @@ class Driver(AbstractUser):
     license_number = models.CharField(
         max_length=255,
         unique=True,
-        null=True,
-        blank=True
     )
 
     class Meta:
